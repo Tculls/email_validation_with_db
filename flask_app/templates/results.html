@@ -10,14 +10,13 @@
 <body>
     <div class="bg-dark text-warning p-5 rounded">
         <h2>Here are the Results:</h2>
-        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
-        {% if messages %}                            <!-- check if there are any messages -->
-            <h2>FLASH!!!!! AHHHHHHHH</h2>
-                {% for message in messages %}            <!-- loop through the messages -->
-                    <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
     {% for email in emails %}
         <p>{{email.email}}  {{email.created_at}} <a href="/destroy/{{email.id}}">Delete</a></p>
     {% endfor %}
